@@ -1,0 +1,24 @@
+Input directory is: testF3
+Connecting to -i port 10000
+sending dir...testF3
+ FILES ARE: 1
+Received file: testF3/maria.txt
+
+ _fileSize : 23
+CLIENT->FILESIZE: 23
+file size is: 23
+buffer is maria
+strlen(buf) is: 23
+file size is: 18
+buffer is  mari
+strlen(buf) is: 18
+file size is: 13
+buffer is a mar
+strlen(buf) is: 13
+file size is: 8
+buffer is ia ma
+strlen(buf) is: 8
+file size is: 3
+buffer is ria
+strlen(buf) is: 3
+Closing connection.

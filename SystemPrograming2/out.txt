@@ -1,0 +1,33 @@
+port: 9002
+thread_pool_size: 4
+queue_size: 3
+block_size: 50
+Listening for connections to port 9002
+Accepted connection from OMEN-Laptop-15-en0xxx
+139955528529664->NEWSOCK: 4
+Received from client: folder1
+<folder1/folder2/f3/f4/f5/f2.txt , 4> inserted inside the Queue
+<folder1/f33.txt , 4> inserted inside the Queue
+Accepted connection from OMEN-Laptop-15-en0xxx
+Worker_thread: 139955562354432 <folder1/folder2/f3/f4/f5/f2.txt , 4> removed from the Queue
+Worker_thread: 139955562354432 is about to read folder1/folder2/f3/f4/f5/f2.txt
+Worker_thread: 139955537176320 <folder1/f33.txt , 4> removed from the Queue
+Worker_thread: 139955537176320 is about to read folder1/f33.txt
+139955520136960->NEWSOCK: 5
+Received from client: testFolder
+<testFolder/subDir1/f5.txt , 5> inserted inside the Queue
+<testFolder/subDir1/f4.txt , 5> inserted inside the Queue
+<testFolder/f1.txt , 5> inserted inside the Queue
+Worker_thread: 139955545569024 <testFolder/subDir1/f5.txt , 5> removed from the Queue
+Worker_thread: 139955545569024 is about to read testFolder/subDir1/f5.txt
+Worker_thread: 139955562354432 <testFolder/subDir1/f4.txt , 5> removed from the Queue
+Worker_thread: 139955562354432 is about to read testFolder/subDir1/f4.txt
+<testFolder/f3.txt , 5> inserted inside the Queue
+<testFolder/f2.txt , 5> inserted inside the Queue
+Worker_thread: 139955553961728 <testFolder/f1.txt , 5> removed from the Queue
+Worker_thread: 139955553961728 is about to read testFolder/f1.txt
+Worker_thread: 139955545569024 <testFolder/f3.txt , 5> removed from the Queue
+Worker_thread: 139955545569024 is about to read testFolder/f3.txt
+Worker_thread: 139955537176320 <testFolder/f2.txt , 5> removed from the Queue
+Worker_thread: 139955537176320 is about to read testFolder/f2.txt
+inside the exit handler

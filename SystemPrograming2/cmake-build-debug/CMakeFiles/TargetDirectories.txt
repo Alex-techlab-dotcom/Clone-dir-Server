@@ -1,0 +1,3 @@
+/home/lito/CLionProjects/SystemPrograming2/cmake-build-debug/CMakeFiles/SystemPrograming2.dir
+/home/lito/CLionProjects/SystemPrograming2/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/lito/CLionProjects/SystemPrograming2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
