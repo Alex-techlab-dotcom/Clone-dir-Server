@@ -1,40 +1,159 @@
-Input directory is: folder1/folder2/f3/f4/f5
+Input directory is: testFolder
 Connecting to -i port 10000
-sending dir...folder1/folder2/f3/f4/f5
- FILES ARE: 1
-Received file: folder1/folder2/f3/f4/f5/f2.txt
-
- _fileSize : 44
-CLIENT->FILESIZE: 44
-file size is: 44
-buffer is alexa
-strlen(buf) is: 44
-file size is: 39
-buffer is ndros
-strlen(buf) is: 39
-file size is: 34
-buffer is  tsal
-strlen(buf) is: 34
-file size is: 29
-buffer is apati
-strlen(buf) is: 29
-file size is: 24
-buffer is s
-age
-strlen(buf) is: 24
-file size is: 19
-buffer is los 1
-strlen(buf) is: 19
-file size is: 14
-buffer is 0
-nik
-strlen(buf) is: 14
-file size is: 9
-buffer is os 22
-strlen(buf) is: 9
+sending dir...testFolder
+CLIENT->SOCK: 3
+ FILES ARE: 5
+filename is: t
+filename is: te
+filename is: tes
+filename is: test
+filename is: testF
+filename is: testFo
+filename is: testFol
+filename is: testFold
+filename is: testFolde
+filename is: testFolder
+filename is: testFolder/
+filename is: testFolder/s
+filename is: testFolder/su
+filename is: testFolder/sub
+filename is: testFolder/subD
+filename is: testFolder/subDi
+filename is: testFolder/subDir
+filename is: testFolder/subDir1
+filename is: testFolder/subDir1/
+filename is: testFolder/subDir1/f
+filename is: testFolder/subDir1/f5
+filename is: testFolder/subDir1/f5.
+filename is: testFolder/subDir1/f5.t
+filename is: testFolder/subDir1/f5.tx
+filename is: testFolder/subDir1/f5.txt
+Received file: testFolder/subDir1/f5.txt
+CLIENT->FILESIZE: 4
 file size is: 4
-buffer is 
-55
-
+buffer is moko
 strlen(buf) is: 4
+ i am done with file 
+filename is: t
+filename is: te
+filename is: tes
+filename is: test
+filename is: testF
+filename is: testFo
+filename is: testFol
+filename is: testFold
+filename is: testFolde
+filename is: testFolder
+filename is: testFolder/
+filename is: testFolder/s
+filename is: testFolder/su
+filename is: testFolder/sub
+filename is: testFolder/subD
+filename is: testFolder/subDi
+filename is: testFolder/subDir
+filename is: testFolder/subDir1
+filename is: testFolder/subDir1/
+filename is: testFolder/subDir1/f
+filename is: testFolder/subDir1/f4
+filename is: testFolder/subDir1/f4.
+filename is: testFolder/subDir1/f4.t
+filename is: testFolder/subDir1/f4.tx
+filename is: testFolder/subDir1/f4.txt
+Received file: testFolder/subDir1/f4.txt
+CLIENT->FILESIZE: 9
+file size is: 9
+buffer is moko 
+strlen(buf) is: 5
+file size is: 4
+buffer is moko
+strlen(buf) is: 4
+ i am done with file 
+filename is: t
+filename is: te
+filename is: tes
+filename is: test
+filename is: testF
+filename is: testFo
+filename is: testFol
+filename is: testFold
+filename is: testFolde
+filename is: testFolder
+filename is: testFolder/
+filename is: testFolder/f
+filename is: testFolder/f1
+filename is: testFolder/f1.
+filename is: testFolder/f1.t
+filename is: testFolder/f1.tx
+filename is: testFolder/f1.txt
+Received file: testFolder/f1.txt
+CLIENT->FILESIZE: 17
+file size is: 17
+buffer is agelo
+strlen(buf) is: 5
+file size is: 12
+buffer is s tsa
+strlen(buf) is: 5
+file size is: 7
+buffer is lapat
+strlen(buf) is: 5
+file size is: 2
+buffer is is
+strlen(buf) is: 2
+ i am done with file 
+filename is: t
+filename is: te
+filename is: tes
+filename is: test
+filename is: testF
+filename is: testFo
+filename is: testFol
+filename is: testFold
+filename is: testFolde
+filename is: testFolder
+filename is: testFolder/
+filename is: testFolder/f
+filename is: testFolder/f3
+filename is: testFolder/f3.
+filename is: testFolder/f3.t
+filename is: testFolder/f3.tx
+filename is: testFolder/f3.txt
+Received file: testFolder/f3.txt
+CLIENT->FILESIZE: 9
+file size is: 9
+buffer is loko 
+strlen(buf) is: 5
+file size is: 4
+buffer is loko
+strlen(buf) is: 4
+ i am done with file 
+filename is: t
+filename is: te
+filename is: tes
+filename is: test
+filename is: testF
+filename is: testFo
+filename is: testFol
+filename is: testFold
+filename is: testFolde
+filename is: testFolder
+filename is: testFolder/
+filename is: testFolder/f
+filename is: testFolder/f2
+filename is: testFolder/f2.
+filename is: testFolder/f2.t
+filename is: testFolder/f2.tx
+filename is: testFolder/f2.txt
+Received file: testFolder/f2.txt
+CLIENT->FILESIZE: 12
+file size is: 12
+buffer is nikos
+strlen(buf) is: 5
+file size is: 7
+buffer is  niko
+strlen(buf) is: 5
+file size is: 2
+buffer is s
+
+strlen(buf) is: 2
+ i am done with file 
 Closing connection.

@@ -48,4 +48,4 @@ Queue queueForFiles;
 static pthread_mutex_t QueueLock;
 pthread_cond_t cond_nonempty;
 pthread_cond_t cond_nonfull;
-unordered_map<int, pthread_mutex_t> socketToMutex;
+unordered_map<int, pthread_mutex_t*> socketToMutex;

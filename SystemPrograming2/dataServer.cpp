@@ -75,8 +75,8 @@ int main(int argc, char *argv[]) {
         if ((*newsock = accept(sock, clientptr, &clientlen)) < 0)
             perror_exit("accept");
         /* The server assigns a mutex to each client*/
-        pthread_mutex_t mtx;
-        pthread_mutex_init(&mtx, NULL); /* Initialize mutex */
+        pthread_mutex_t* mtx=(pthread_mutex_t*) malloc(sizeof(pthread_mutex_t));
+        pthread_mutex_init(mtx, NULL); /* Initialize mutex */
         socketToMutex[*newsock] = mtx;
 
 
@@ -88,7 +88,7 @@ int main(int argc, char *argv[]) {
             herror("gethostbyaddr");
             exit(1);
         }
-        printf("Accepted connection from %s\n", rem->h_name);
+        //printf("Accepted connection from %s\n", rem->h_name);
         //cout<< "SERVER->NEWSOCK: "<<*newsock<<endl;
         pthread_t communicationThread;
         if ((err = pthread_create(&communicationThread, NULL, readDirName, newsock))) {
@@ -158,12 +158,13 @@ void *readDirName(void *_newsock) {
     }
     /* the client must know how many files , he will receive! */
     int numberOfFiles = folderFiles.size();
-    char _numberOfFiles[100];
+    numberOfFiles= htons(numberOfFiles);
+    //char _numberOfFiles[100];
     /* cout << " SERVER->FILES ARE: " << numberOfFiles << endl;*/
-    sprintf(_numberOfFiles, "%d", numberOfFiles);
+    //sprintf(_numberOfFiles, "%d", numberOfFiles);
 
     /* write the files number to client socket*/
-    write(newsock, _numberOfFiles, strlen(_numberOfFiles) + 1);
+    write(newsock, &numberOfFiles, sizeof(int));
 
     /* place the files inside the Queue! */
     for (int i = 0; i < folderFiles.size(); ++i) {
@@ -186,7 +187,7 @@ void *readDirName(void *_newsock) {
         /* diaforetika polles gia mikra arxeia , i se periptosi pou epomenos pelatis den milisei me ton server amesws to com_pthread prolavainei
          kai eisagei ola ta arxeia stin oura xwris na prolabei kapoios allos NEOS pelatis na dimiourgi8ei , opote i xrisi tis usleep den sterei
          apo to programma apodotikotika apla kanei pio emfanes oti ilopoiisa ton sixronismo pou epi8imite*/
-        usleep(100);
+        //usleep(100);
     }
 
     pthread_exit(NULL);
@@ -209,13 +210,14 @@ void *sendFileToClient(void *ptr) {
         pthread_mutex_unlock(&QueueLock);
         pthread_cond_signal(&cond_nonfull);
 
+
         /* start copying the data from file to client*/
         /* first get the fileName */
         char *fileName = (char *) malloc(strlen((filenameWithFD.first).c_str()) + 2);
         strcpy(fileName, (filenameWithFD.first).c_str());
 
         /* acquire the mutex to block other working_threads from communicating to the same client */
-        pthread_mutex_lock(&socketToMutex[filenameWithFD.second]);
+        pthread_mutex_lock(socketToMutex[filenameWithFD.second]);
         //cout <<"Worker_thread: "<<pthread_self()<<" locked mutex: "<<filenameWithFD.second<<endl;
         /* send file name to client*/
         int clientSocketD = filenameWithFD.second;
@@ -230,16 +232,19 @@ void *sendFileToClient(void *ptr) {
         /* find the size of the file! */
         int fileSize;
         ioctl(fd, FIONREAD, &fileSize);
+        int fz= htons(fileSize);
+        //int fz=fileSize;
 
         /* convert the size to char[] with '\n' in the end*/
-        char number[100];
+      /*  char number[100];
         sprintf(number, "%d", fileSize);
-        strcat(number, "\n");
+        strcat(number, "\n");*/
 
-        //cout<<"SERVER->FILESIZE: "<<number<<endl;
+         /*write the the size inside the socket */
+        cout<<"SERVER->FILESIZE: "<<fz<<endl;
+        //fz = htons(fileSize);
 
-        /* write the the size inside the socket */
-        write(clientSocketD, number, strlen(number));
+        write(clientSocketD, &fz, sizeof(int));
         // write(clientSocketD, "\n", 1);
 
         char readingBuffer[numOfBytes + 1];
@@ -252,10 +257,12 @@ void *sendFileToClient(void *ptr) {
             /* clear the buffer */
             memset(readingBuffer, 0, sizeof(readingBuffer));
         }
-        /* char clientFinised[100];
+        close(fd);
+        //cout<<"I AM DONE "<<pthread_self()<<endl;
+         /*char clientFinised[100];
          read(clientSocketD,clientFinised,sizeof(clientFinised));*/
-        //cout <<"Worker_thread: "<<pthread_self()<<" is about to release mutex: "<<filenameWithFD.second<<endl;
-        pthread_mutex_unlock(&socketToMutex[filenameWithFD.second]);
+        //cout <<"Worker_thread: "<<pthread_self()<<"  RELEASED MUTEX: "<<filenameWithFD.second<<endl;
+        pthread_mutex_unlock(socketToMutex[filenameWithFD.second]);
         //sleep(1);
     }
     cout << "END FROM WORKER_THREAD" << endl;

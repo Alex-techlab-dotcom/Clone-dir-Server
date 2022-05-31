@@ -32,18 +32,18 @@ int main(int argc, char *argv[]) {
     printf("Connecting to %s port %d\n", argv[1], port);
 
     /* write the directory name to server socket! */
-    cout<<"sending dir..."<<directory<<endl;
-    /*cout<< "CLIENT->SOCK: "<<sock<<endl;*/
+    cout << "sending dir..." << directory << endl;
+    cout << "CLIENT->SOCK: " << sock << endl;
     if (write(sock, directory, strlen(directory) + 1) < 0)
         perror_exit("write");
     /* retrieve how many files the directory contains*/
     int numOfFiles;
     char _numOfFiles[100];
-    if (read(sock, _numOfFiles, sizeof(_numOfFiles)) < 0)
+    if (read(sock, &numOfFiles, sizeof(numOfFiles)) < 0)
         perror_exit("read file number failed! ");
-    numOfFiles = atoi(_numOfFiles);
+    numOfFiles = ntohs(numOfFiles);
+    //numOfFiles = atoi(_numOfFiles);
     cout << " FILES ARE: " << numOfFiles << endl;
-
     /* for each file do:*/
     for (int file = 0; file < numOfFiles; ++file) {
         /* receive the fileName */
@@ -52,8 +52,11 @@ int main(int argc, char *argv[]) {
         while (read(sock, bufferLetter, 1) > 0) {
             if (bufferLetter[0] != '\n') {
                 fileName += bufferLetter[0];
+                cout << "filename is: " << fileName << endl;
                 continue;
-            } else break;
+            } else
+                break;
+
         }
         /* create the needed folders first*/
         _mkdir(fileName);
@@ -64,53 +67,56 @@ int main(int argc, char *argv[]) {
             perror("fileName.out: file open problem from worker\n");
             exit(3);
         }
-
         /* the client must know how many bytes must read so he can stop the read() while Loop */
         int fileSize;
+        int fz;
         string _fileSize;
-        char *sz = (char *) malloc(512);
         memset(bufferLetter, 0, 1);
-        while (read(sock, bufferLetter, 1) > 0) {
+        read(sock, &fz, sizeof(fz));
+        fileSize= ntohs(fz);
+      /*  while (read(sock, bufferLetter, 1) > 0) {
             if (bufferLetter[0] != '\n') {
                 _fileSize += bufferLetter[0];
+                cout << _fileSize << endl;
                 continue;
             } else {
                 break;
             }
-        }
-        cout << sz << endl;
-        cout << " _fileSize : " << _fileSize << endl;
-        _fileSize += "\0";
+        }*/
+        //cout << sz << endl;
+        //cout << " _fileSize : " << _fileSize << endl;
+        //_fileSize += "\0";
         //char fs[1024];
         //strcpy(fs,_fileSize.c_str());
-        fileSize = stoi(_fileSize);
+        //fileSize = stoi(_fileSize);
         cout << "CLIENT->FILESIZE: " << fileSize << endl;
 
         int sizeOfBuffer = 0;
         if (fileSize > 6)
             sizeOfBuffer = 6;
         else
-            sizeOfBuffer = fileSize+1;
+            sizeOfBuffer = fileSize + 1;
         char buf[sizeOfBuffer];
         memset(buf, 0, sizeof(buf));
-        while ((read(sock, buf, sizeOfBuffer-1)) > 0) {
+        while ((read(sock, buf, sizeOfBuffer - 1)) > 0) {
             cout << "file size is: " << fileSize << endl;
             cout << "buffer is " << buf << endl;
             /* write the contents of the file to fd */
             write(fd, buf, strlen(buf));
-            cout << "strlen(buf) is: " << fileSize << endl;
+            cout << "strlen(buf) is: " << strlen(buf) << endl;
             /* subtract the bytes we just read from the total bytes! */
             fileSize -= strlen(buf);
-            if(fileSize<=sizeOfBuffer-1)
-                sizeOfBuffer=fileSize+1;
+            if (fileSize <= sizeOfBuffer - 1)
+                sizeOfBuffer = fileSize + 1;
             /* clear the buffer */
             memset(buf, 0, strlen(buf));
             /* if we are reached the end of the file, we stop reading*/
             if (fileSize <= 0)
                 break;
         }
-      /*  char *message = "DONE_READING";*/
-        //write(sock, message, strlen(message));
+        cout << " i am done with file " << endl;
+        /* char *message = "DONE_READING";
+         write(sock, message, strlen(message));*/
         close(fd);
     }
 
