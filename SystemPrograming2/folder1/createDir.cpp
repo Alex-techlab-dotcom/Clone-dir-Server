@@ -13,7 +13,6 @@
 #include <iostream>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include <string.h>
 
 using namespace std;
 
@@ -31,29 +30,6 @@ bool containsFolder(string directory) {
 }
 
 int main(int argc, char *argv[]) {
-    int port, thread_pool_size, queue_size, block_size, sock;
-    pthread_t *workingThreadsArray;
-    int opt = 0;
-    int iOptLen = sizeof(int);
-    /* ./dataServer -p <port> -s <thread_pool_size> -q <queue_size> -b <block_size> */
-    for (int i = 1; i < argc; i+=2) {
-        if (!strcmp(argv[i],"-p")){
-            port = atoi(argv[i+1]);
-        }else if (!strcmp(argv[i],"-s")){
-            thread_pool_size = atoi(argv[i+1]);
-        }else if (!strcmp(argv[i],"-q")){
-            queue_size = atoi(argv[i+1]);
-        }else if (!strcmp(argv[i],"-b")){
-            block_size = atoi(argv[i+1]);
-        }
-    }
-    /* print the arguments */
-    cout << "port: " << port << endl;
-    cout << "thread_pool_size: " << thread_pool_size << endl;
-    cout << "queue_size: " << queue_size << endl;
-    cout << "block_size: " << block_size << endl;
-
-    return 1;
     string dir = "folder1/folder2/f3/f4/f5/f2.txt";
     string subDir;
     for (int letter = 0; letter < dir.length(); ++letter) {

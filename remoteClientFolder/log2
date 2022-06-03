@@ -1,5 +1,5 @@
 Input directory is: testFolder
-Connecting to -i port 10000
+Connecting to -d port 10000
 sending dir...testFolder
 CLIENT->SOCK: 3
  FILES ARE: 5
@@ -30,9 +30,59 @@ filename is: testFolder/subDir1/f5.tx
 filename is: testFolder/subDir1/f5.txt
 Received file: testFolder/subDir1/f5.txt
 CLIENT->FILESIZE: 4
+sizeOfBuffer: 102
+size of buffer : 102
 file size is: 4
-buffer is moko
-strlen(buf) is: 4
+moko
+ i am done with file 
+filename is: t
+filename is: te
+filename is: tes
+filename is: test
+filename is: testF
+filename is: testFo
+filename is: testFol
+filename is: testFold
+filename is: testFolde
+filename is: testFolder
+filename is: testFolder/
+filename is: testFolder/f
+filename is: testFolder/f3
+filename is: testFolder/f3.
+filename is: testFolder/f3.t
+filename is: testFolder/f3.tx
+filename is: testFolder/f3.txt
+Received file: testFolder/f3.txt
+CLIENT->FILESIZE: 9
+sizeOfBuffer: 102
+size of buffer : 102
+file size is: 9
+loko loko
+ i am done with file 
+filename is: t
+filename is: te
+filename is: tes
+filename is: test
+filename is: testF
+filename is: testFo
+filename is: testFol
+filename is: testFold
+filename is: testFolde
+filename is: testFolder
+filename is: testFolder/
+filename is: testFolder/f
+filename is: testFolder/f2
+filename is: testFolder/f2.
+filename is: testFolder/f2.t
+filename is: testFolder/f2.tx
+filename is: testFolder/f2.txt
+Received file: testFolder/f2.txt
+CLIENT->FILESIZE: 12
+sizeOfBuffer: 102
+size of buffer : 102
+file size is: 12
+nikos nikos
+
  i am done with file 
 filename is: t
 filename is: te
@@ -61,12 +111,10 @@ filename is: testFolder/subDir1/f4.tx
 filename is: testFolder/subDir1/f4.txt
 Received file: testFolder/subDir1/f4.txt
 CLIENT->FILESIZE: 9
+sizeOfBuffer: 102
+size of buffer : 102
 file size is: 9
-buffer is moko 
-strlen(buf) is: 5
-file size is: 4
-buffer is moko
-strlen(buf) is: 4
+moko moko
  i am done with file 
 filename is: t
 filename is: te
@@ -87,73 +135,9 @@ filename is: testFolder/f1.tx
 filename is: testFolder/f1.txt
 Received file: testFolder/f1.txt
 CLIENT->FILESIZE: 17
+sizeOfBuffer: 102
+size of buffer : 102
 file size is: 17
-buffer is agelo
-strlen(buf) is: 5
-file size is: 12
-buffer is s tsa
-strlen(buf) is: 5
-file size is: 7
-buffer is lapat
-strlen(buf) is: 5
-file size is: 2
-buffer is is
-strlen(buf) is: 2
- i am done with file 
-filename is: t
-filename is: te
-filename is: tes
-filename is: test
-filename is: testF
-filename is: testFo
-filename is: testFol
-filename is: testFold
-filename is: testFolde
-filename is: testFolder
-filename is: testFolder/
-filename is: testFolder/f
-filename is: testFolder/f3
-filename is: testFolder/f3.
-filename is: testFolder/f3.t
-filename is: testFolder/f3.tx
-filename is: testFolder/f3.txt
-Received file: testFolder/f3.txt
-CLIENT->FILESIZE: 9
-file size is: 9
-buffer is loko 
-strlen(buf) is: 5
-file size is: 4
-buffer is loko
-strlen(buf) is: 4
- i am done with file 
-filename is: t
-filename is: te
-filename is: tes
-filename is: test
-filename is: testF
-filename is: testFo
-filename is: testFol
-filename is: testFold
-filename is: testFolde
-filename is: testFolder
-filename is: testFolder/
-filename is: testFolder/f
-filename is: testFolder/f2
-filename is: testFolder/f2.
-filename is: testFolder/f2.t
-filename is: testFolder/f2.tx
-filename is: testFolder/f2.txt
-Received file: testFolder/f2.txt
-CLIENT->FILESIZE: 12
-file size is: 12
-buffer is nikos
-strlen(buf) is: 5
-file size is: 7
-buffer is  niko
-strlen(buf) is: 5
-file size is: 2
-buffer is s
-
-strlen(buf) is: 2
+agelos tsalapatis
  i am done with file 
 Closing connection.
